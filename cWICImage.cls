@@ -14,7 +14,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 '********************************************************************************
-'cWICImage 0.4 (x64 port)
+'cWICImage 0.5 (x64 port)
 'Windows Imaging Component Basic Usage Demo
 '
 'Author: fafalone
@@ -30,6 +30,7 @@ Option Explicit
 ' You must set the hWnd parameter to use this.
 '
 'Updates:
+'0.5 - Fixes to work with recent tB and WDL versions. Minor improvements.
 '0.4 - Bug fixes to work with latest WDL versions. Fix save notification position.
 '0.3 - Add BMP save option. Update WinDevLib version.
 '
@@ -322,7 +323,7 @@ If hDIBBitmap Then
 '    CopyMemory bData(0), ByVal pvImageBits, nImage
      Debug.Print "nStride=" & nStride & ",nImage=" & nImage & ",ptr=" & pvImageBits
     
-    pImage.CopyPixels vbNullPtr, nStride, nImage, ByVal pvImageBits 'VarPtr(bData(0))
+    pImage.CopyPixels ByVal vbNullPtr, nStride, nImage, ByVal pvImageBits 'VarPtr(bData(0))
 '    CopyMemory ByVal pvImageBits, bData(0), nImage
     hBitmapToPictureBox hDC, hDIBBitmap, x, y
     DeleteObject hDIBBitmap
@@ -356,7 +357,7 @@ If (pEnc Is Nothing) = False Then
         optImgQuality.pstrName = StrPtr("ImageQuality")
         Dim pv As Variant
         pv = Quality
-        ppbag.Write 1&, optImgQuality, VarPtr(pv)
+        ppbag.Write 1&, optImgQuality, pv
         hr = pTFrame.Initialize(ppbag)
         Debug.Print "pTFrame.Init hr=0x" & Hex$(hr)
         
@@ -364,7 +365,7 @@ If (pEnc Is Nothing) = False Then
             Dim idPF As UUID
             mSave.GetPixelFormat idPF
              pTFrame.SetPixelFormat idPF 'GUID_WICPixelFormat32bppBGRA
-             pTFrame.WriteSource mSave, vbNullPtr
+             pTFrame.WriteSource mSave, ByVal vbNullPtr
              Dim pThumb As IWICBitmapSource
              
             hr = pFrame.GetThumbnail(pThumb)
@@ -414,7 +415,7 @@ If (pEnc Is Nothing) = False Then
         Dim idPF As UUID
         mSave.GetPixelFormat idPF
          pTFrame.SetPixelFormat idPF
-         pTFrame.WriteSource mSave, vbNullPtr
+         pTFrame.WriteSource mSave, ByVal vbNullPtr
          Dim pThumb As IWICBitmapSource
          
         hr = pFrame.GetThumbnail(pThumb)
@@ -461,7 +462,7 @@ If (pEnc Is Nothing) = False Then
         Dim idPF As UUID
         mSave.GetPixelFormat idPF
          pTFrame.SetPixelFormat idPF
-         pTFrame.WriteSource mSave, vbNullPtr
+         pTFrame.WriteSource mSave, ByVal vbNullPtr
          Dim pThumb As IWICBitmapSource
          
         hr = pFrame.GetThumbnail(pThumb)

@@ -352,7 +352,7 @@ If (pEnc Is Nothing) = False Then
         optImgQuality.pstrName = StrPtr("ImageQuality")
         Dim pv As Variant
         pv = Quality
-        ppbag.Write 1&, optImgQuality, VarPtr(pv)
+        ppbag.Write 1&, optImgQuality, pv
         hr = pTFrame.Initialize(ppbag)
         Debug.Print "pTFrame.Init hr=0x" & Hex$(hr)
         

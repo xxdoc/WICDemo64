@@ -1,13 +1,13 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
-Reference=*\G{F9015E81-CAAC-45C0-94E8-42B7DA5D7558}#6.3#0#..\..\Windows\SysWow64\oleexp.tlb#OLEEXP - Modern Shell Interfaces for VB6, v6.3
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{F9015E81-CAAC-45C0-94E8-42B7DA5D7558}#6.3#0#..\..\..\..\..\..\WINDOWS\SysWow64\oleexp.tlb#OLEEXP - Modern Shell Interfaces for VB6, v6.3
 Form=Form1.frm
-Module=mIID; ..\tl_ole\mIID.bas
-Module=mWIC; ..\tl_ole\mWIC.bas
 Class=cWICImage; cWICImage.cls
 Module=Module1; Module1.bas
 Class=cFileDlgEvents; cFileDlgEvents.cls
 ResFile32="WICDemo.res"
+Module=mIID; ..\..\..\..\..\..\vb6\tl_ole\mIID.bas
+Module=mWIC; ..\..\..\..\..\..\vb6\tl_ole\mWIC.bas
 Startup="Form1"
 HelpFile=""
 ExeName32="WICDemo-RC1.exe"
